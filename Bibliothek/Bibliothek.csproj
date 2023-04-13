@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="images\icons8-checkmark-256.png" />
+    <None Remove="images\reading - Kopie.jpg" />
+    <None Remove="images\reading.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\icons8-checkmark-256.png" />
+    <Resource Include="images\reading - Kopie.jpg" />
+    <Resource Include="images\reading.png" />
+  </ItemGroup>
+
+</Project>

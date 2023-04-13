@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Bibliothek.UserController.ucBuchList1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bibliothek.UserController"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" >
+            <DataGrid  BorderThickness="1"/>
+        </Border>
+        <Border Grid.Row="1" Background="White" Height="70" VerticalAlignment="Center" >
+            <DockPanel LastChildFill="False" HorizontalAlignment="Center">
+                <Button Content="Buch Hinzufügen" Width="94" Style="{DynamicResource ucbuttons}" Margin="0,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB"/>
+                <Button Content="Button" Width="94" Style="{DynamicResource ucbuttons}" Margin="15,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB"/>
+            </DockPanel>
+
+        </Border>
+    </Grid>
+</UserControl>

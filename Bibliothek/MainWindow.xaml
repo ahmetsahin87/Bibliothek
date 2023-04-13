@@ -1,0 +1,108 @@
+﻿<Window x:Class="Bibliothek.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bibliothek"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="windowload">
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
+    <Grid Margin="0,0,10,10" >
+        <Grid.Effect>
+            <DropShadowEffect/>
+        </Grid.Effect>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <!--Logo-->
+        <Border Background="#FF134187" Grid.Column="0" Grid.Row="0" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0"  >
+                    <DockPanel >
+                        <Image Source="/images/reading.png" DockPanel.Dock="Left" />
+                        <Label Content="Bibliothek" FontSize="14" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Row="1" >
+                    <DockPanel >
+                        <Image >
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Setter Property="Source" Value="C:\Users\sahin_a\source\repos\Bibliothek\Bibliothek\images\icons8-add-document-100 (1).png"/>
+                                    <Setter Property="Height" Value="auto"/>
+                                    <Setter Property="Width" Value="100"/>
+
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="C:\Users\sahin_a\source\repos\Bibliothek\Bibliothek\images\icons8-add-document-100.png"/>
+                                        </Trigger>
+
+                                    </Style.Triggers>
+
+
+                                </Style>
+                            </Image.Style>
+                        </Image>
+
+
+
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border Background="#FF134187" Grid.Row="0" Grid.Column="1" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0"  Background="White">
+                    <DockPanel Width="72" HorizontalAlignment="Right" >
+                        <Button Content="_" Style="{DynamicResource minibuttons}"/>
+                        <Button Content="X"  x:Name="btn_Schliessen" Click="btn_Schliessen_Click" Style="{DynamicResource minibuttons}" Margin="5,0,0,0"/>
+
+                    </DockPanel>
+                </Border>
+                <Border Grid.Row="1">
+                    <Label Content="Willkommen" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" ></Label>
+                </Border>
+
+            </Grid>
+        </Border>
+        <!--Menü-->
+        <Border Background="#FF134187" Grid.Row="1" Grid.Column="0"  >
+            <StackPanel >
+                <Button Style="{DynamicResource menübuttons}" Content="Katalog" Margin="0,5,0,0" x:Name="menubtn_Katalog" Click="btn_Katalog_click"/>
+                <Button Style="{DynamicResource menübuttons}" Content="Benutzer"/>
+                <Button Style="{DynamicResource menübuttons}" Content="Ausgeliehene Bücher"/>
+                <Button Style="{DynamicResource menübuttons}" Content="Frist Abgelaufen"/>
+                <Button Style="{DynamicResource menübuttons}" Content="Einstellungen"/>
+
+            </StackPanel>
+
+
+        </Border>
+
+        <Border  Grid.Row="1" Grid.Column="1" Background="#FFE2E2E2">
+            <Grid x:Name="Inhalt">
+                
+            </Grid>
+                
+            
+        </Border>
+
+    </Grid>
+</Window>
