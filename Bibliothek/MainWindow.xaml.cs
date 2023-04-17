@@ -41,5 +41,17 @@ namespace Bibliothek
         {
             UC_Call.UC_Add(Inhalt, new ucBuchList1());
         }
+
+        private void btn_minimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState= WindowState.Minimized;
+        }
+
+        private void btn_maximize_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.WindowState==WindowState.Normal)
+            this.WindowState = WindowState.Maximized;
+            else this.WindowState = WindowState.Normal;
+        }
     }
 }

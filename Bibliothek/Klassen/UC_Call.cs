@@ -13,9 +13,8 @@ namespace Bibliothek.Klassen
         {
             if ( grd.Children.Count>0 ) 
             {
-                 grd.Children.Clear();
+                grd.Children.Clear();
                 grd.Children.Add( uc );
-
             }
             else
             {

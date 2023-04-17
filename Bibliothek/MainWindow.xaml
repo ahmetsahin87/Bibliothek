@@ -70,8 +70,9 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0"  Background="White">
-                    <DockPanel Width="72" HorizontalAlignment="Right" >
-                        <Button Content="_" Style="{DynamicResource minibuttons}"/>
+                    <DockPanel HorizontalAlignment="Right" >
+                        <Button Content="_" Style="{DynamicResource minibuttons}" x:Name="btn_minimize" Width="35" Click="btn_minimize_Click"/>
+                        <Button Content="O" Style="{DynamicResource minibuttons}" Margin="5,0,0,0" x:Name="btn_maximize" Click="btn_maximize_Click"/>
                         <Button Content="X"  x:Name="btn_Schliessen" Click="btn_Schliessen_Click" Style="{DynamicResource minibuttons}" Margin="5,0,0,0"/>
 
                     </DockPanel>
