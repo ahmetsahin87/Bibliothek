@@ -87,10 +87,11 @@
         <Border Background="#FF134187" Grid.Row="1" Grid.Column="0"  >
             <StackPanel >
                 <Button Style="{DynamicResource menübuttons}" Content="Katalog" Margin="0,5,0,0" x:Name="menubtn_Katalog" Click="btn_Katalog_click"/>
-                <Button Style="{DynamicResource menübuttons}" Content="Benutzer"/>
-                <Button Style="{DynamicResource menübuttons}" Content="Ausgeliehene Bücher"/>
-                <Button Style="{DynamicResource menübuttons}" Content="Frist Abgelaufen"/>
-                <Button Style="{DynamicResource menübuttons}" Content="Einstellungen"/>
+                <Button x:Name="menubtn_Benutzer" Style="{DynamicResource menübuttons}" Content="Benutzer" Click="menubtn_Benutzer_Click"/>
+                <Button x:Name="menubtn_Ausleih" Style="{DynamicResource menübuttons}" Content="Ausgeliehene Bücher" Click="menubtn_Ausleih_Click"/>
+                <Button x:Name="menubtn_Abgelaufen" Style="{DynamicResource menübuttons}" Content="Frist Abgelaufen" Click="menubtn_Abgelaufen_Click"/>
+                <Button x:Name="menubtn_Verlag" Style="{DynamicResource menübuttons}" Content="Verlag" Click="menubtn_Verlag_Click"/>
+                <Button x:Name="menubtn_Author" Style="{DynamicResource menübuttons}" Content="Author" Click="menubtn_Author_Click" />
 
             </StackPanel>
 

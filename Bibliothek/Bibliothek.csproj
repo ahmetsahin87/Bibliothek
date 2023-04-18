@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Repository\Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="images\icons8-checkmark-256.png" />
     <Resource Include="images\reading - Kopie.jpg" />
     <Resource Include="images\reading.png" />

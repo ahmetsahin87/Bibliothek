@@ -48,7 +48,7 @@ namespace Repository.Migrations
 
                     b.HasIndex("BuchId");
 
-                    b.ToTable("Ausleihs");
+                    b.ToTable("Ausleihs", (string)null);
                 });
 
             modelBuilder.Entity("Repository.Models.Author", b =>
@@ -69,7 +69,7 @@ namespace Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Author");
+                    b.ToTable("Author", (string)null);
                 });
 
             modelBuilder.Entity("Repository.Models.Benutzer", b =>
@@ -93,7 +93,7 @@ namespace Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Benutzer");
+                    b.ToTable("Benutzer", (string)null);
                 });
 
             modelBuilder.Entity("Repository.Models.Buch", b =>
@@ -126,7 +126,7 @@ namespace Repository.Migrations
 
                     b.HasIndex("VerlagId");
 
-                    b.ToTable("Buches");
+                    b.ToTable("Buches", (string)null);
                 });
 
             modelBuilder.Entity("Repository.Models.Verlag", b =>
@@ -151,7 +151,7 @@ namespace Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Verlags");
+                    b.ToTable("Verlags", (string)null);
                 });
 
             modelBuilder.Entity("Repository.Models.Ausleih", b =>

@@ -17,22 +17,19 @@ using System.Windows.Shapes;
 namespace Bibliothek.UserController
 {
     /// <summary>
-    /// Interaktionslogik für ucBuchList1.xaml
+    /// Interaktionslogik für ucAuthor.xaml
     /// </summary>
-    public partial class ucBuchList1 : UserControl
+    public partial class ucAuthor : UserControl
     {
-        public List<Buch> Buchlist;
-        public ucBuchList1()
+        public List<Author> Authorlist;
+        public ucAuthor()
         {
             InitializeComponent();
-
-            using (DbCont _context=new DbCont())
+            using (DbCont _context = new DbCont())
             {
-                Buchlist = _context.Buches.ToList();
+                Authorlist = _context.Author.ToList();
             }
-            grid_buch.ItemsSource= Buchlist;
+            grid_Author.ItemsSource = Authorlist;
         }
-
-       
     }
 }
