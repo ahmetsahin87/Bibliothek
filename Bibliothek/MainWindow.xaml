@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bibliothek"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="windowload">
+        Title="MainWindow" Height="450" Width="700" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="windowload">
     <Window.Effect>
         <DropShadowEffect/>
     </Window.Effect>
@@ -69,11 +69,11 @@
                     <RowDefinition Height="35"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0"  Background="White">
+                <Border Grid.Row="0"  Background="White" BorderBrush="#FF134187" BorderThickness="1" >
                     <DockPanel HorizontalAlignment="Right" >
                         <Button Content="_" Style="{DynamicResource minibuttons}" x:Name="btn_minimize" Width="35" Click="btn_minimize_Click"/>
-                        <Button Content="O" Style="{DynamicResource minibuttons}" Margin="5,0,0,0" x:Name="btn_maximize" Click="btn_maximize_Click"/>
-                        <Button Content="X"  x:Name="btn_Schliessen" Click="btn_Schliessen_Click" Style="{DynamicResource minibuttons}" Margin="5,0,0,0"/>
+                        <Button Content="O" Style="{DynamicResource minibuttons}"  x:Name="btn_maximize" Click="btn_maximize_Click"/>
+                        <Button Content="X"  x:Name="btn_Schliessen" Click="btn_Schliessen_Click" Style="{DynamicResource minibuttons}"  />
 
                     </DockPanel>
                 </Border>
@@ -92,17 +92,13 @@
                 <Button x:Name="menubtn_Abgelaufen" Style="{DynamicResource menübuttons}" Content="Frist Abgelaufen" Click="menubtn_Abgelaufen_Click"/>
                 <Button x:Name="menubtn_Verlag" Style="{DynamicResource menübuttons}" Content="Verlag" Click="menubtn_Verlag_Click"/>
                 <Button x:Name="menubtn_Author" Style="{DynamicResource menübuttons}" Content="Author" Click="menubtn_Author_Click" />
-
             </StackPanel>
-
-
         </Border>
 
-        <Border  Grid.Row="1" Grid.Column="1" Background="#FFE2E2E2">
+        <Border  Grid.Row="1" Grid.Column="1" Background="#FF134187">
             <Grid x:Name="Inhalt">
                 
-            </Grid>
-                
+            </Grid>               
             
         </Border>
 

@@ -1,4 +1,5 @@
-﻿using Repository.Models;
+﻿using Bibliothek.VMs;
+using Repository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +26,21 @@ namespace Bibliothek.UserController
         public ucBenutzer()
         {
             InitializeComponent();
+            var Benutzer_VM_List = new List<BenutzerVM>();
             using (DbCont _context = new DbCont())
             {
+
                 Benutzerlist = _context.Benutzer.ToList();
+                foreach (var benutzer  in Benutzerlist)
+                {
+                    var vm = new BenutzerVM();
+                    vm.Nachname = benutzer.Nachname;
+                    vm.Geburtsdatum=benutzer.Geburtsdatum;
+                    vm.Vorname = benutzer.VorName;
+                    Benutzer_VM_List.Add(vm); 
+                }
             }
-            grid_Benutzer.ItemsSource = Benutzerlist;
+            this.DataContext = Benutzer_VM_List;
         }
     }
 }

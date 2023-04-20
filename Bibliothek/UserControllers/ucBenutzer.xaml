@@ -13,7 +13,13 @@
 
         </Grid.RowDefinitions>
         <Border Grid.Row="0" >
-            <DataGrid x:Name="grid_Benutzer" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+            <DataGrid x:Name="grid_Benutzer" ItemsSource="{Binding}" Style="{DynamicResource DataGrids}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Vorname" Binding="{Binding Vorname }"/>
+                    <DataGridTextColumn Header="Nachname" Binding="{Binding Nachname }"/>
+                    <DataGridTextColumn Header="Geburtsdatum" Binding="{Binding Geburtsdatum }"  />
+                </DataGrid.Columns>
+            </DataGrid>
         </Border>
         <Border Grid.Row="1" Background="White" Height="70" VerticalAlignment="Center" >
             <DockPanel LastChildFill="False" HorizontalAlignment="Center">

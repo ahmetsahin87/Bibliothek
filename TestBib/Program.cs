@@ -1,13 +1,20 @@
 ﻿
 // See https://aka.ms/new-console-template for more information
+using Microsoft.EntityFrameworkCore;
 using Repository.Models;
 
 
 
-var dbcont = new DbCont();
+var _context = new DbCont();
 
-var s = dbcont.Buches.ToList();
-
+var s = _context.Buches.Include(a => a.Author).ToList();
 var a = s.FirstOrDefault().Name;
 
-Console.WriteLine(a);
+
+
+var buch = _context.Buches.ToList().FirstOrDefault();
+
+
+var authorname = buch.Author.VorName;
+
+Console.WriteLine(authorname);

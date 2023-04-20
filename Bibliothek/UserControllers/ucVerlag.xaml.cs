@@ -1,4 +1,5 @@
-﻿using Repository.Models;
+﻿using Bibliothek.VMs;
+using Repository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,13 +25,26 @@ namespace Bibliothek.UserController
         public List<Verlag> Verlaglist;
         public ucVerlag()
         {
-
             InitializeComponent();
+            var Verlag_VM_List = new List<VerlagVM>();
             using (DbCont _context = new DbCont())
             {
+                
                 Verlaglist = _context.Verlags.ToList();
+
+                foreach (var verlag in Verlaglist)
+                {
+                    var vm = new VerlagVM();
+                    vm.Name = verlag.Name;
+                    vm.Ort = verlag.Ort;
+                    vm.Email = verlag.Email;
+
+                    Verlag_VM_List.Add(vm);
+
+                }
+
             }
-            grid_verlag.ItemsSource = Verlaglist;
+            this.DataContext = Verlag_VM_List;
         }
     }
 }

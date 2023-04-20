@@ -17,19 +17,20 @@ using System.Windows.Shapes;
 namespace Bibliothek.UserController
 {
     /// <summary>
-    /// Interaktionslogik für ucAuthor.xaml
+    /// Interaktionslogik für ucAbgelaufen.xaml
     /// </summary>
-    public partial class ucAuthor : UserControl
+    
+    public partial class ucAbgelaufen : UserControl
     {
-        public List<Author> Authorlist;
-        public ucAuthor()
+        public List<Abgelaufen> Abgelaufenlist;
+        public ucAbgelaufen()
         {
             InitializeComponent();
             using (DbCont _context = new DbCont())
             {
-                Authorlist = _context.Author.ToList();
+               // Abgelaufenlist = _context.Ausleihs.ToList();
             }
-            grid_Author.ItemsSource = Authorlist;
+            //grid_abgelaufen.ItemsSource = Abgelaufenlist;
         }
     }
 }
