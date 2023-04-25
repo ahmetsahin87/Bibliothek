@@ -1,4 +1,6 @@
 ﻿
+using Bibliothek.Klassen;
+using Bibliothek.UserControllers;
 using Bibliothek.VMs;
 using Microsoft.EntityFrameworkCore;
 using Repository.Models;
@@ -28,6 +30,7 @@ namespace Bibliothek.UserController
                 foreach (var buch in Buchlist)
                 {
                     var vm = new BuchVM();
+                    vm.Id= buch.Id;
                     vm.Name = buch.Name;
                     vm.Seite = buch.Seite;
                     vm.Erscheinungsjahr = buch.Erscheinungsjahr.Year;
@@ -37,9 +40,7 @@ namespace Bibliothek.UserController
                     Buch_VM_List.Add(vm);   
                     
                 }
-            }
-
-           
+            }    
 
 
 
@@ -47,6 +48,11 @@ namespace Bibliothek.UserController
            // grid_buch.ItemsSource= Buchlist;
         }
 
-       
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            
+            Add_Buch badd = new Add_Buch();
+            
+        }
     }
 }

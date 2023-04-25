@@ -8,6 +8,7 @@ namespace Bibliothek.VMs
 {
     internal class BenutzerVM
     {
+        public int Id { get; set; }
         public string Nachname { get; set; }
         public string Vorname { get; set; }
         public DateTime Geburtsdatum { get; set; }

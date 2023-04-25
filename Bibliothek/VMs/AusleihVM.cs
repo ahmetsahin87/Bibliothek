@@ -9,11 +9,12 @@ namespace Bibliothek.VMs
 {
     internal class AusleihVM
     {
+        public int Id { get; set; }
         public DateTime AusleihDatum { get; set; }
         public DateTime RueckgabeDatum { get; set; }
         public string BenutzerNachname { get; set; }
         public string BenutzerVorname { get; set; }
-        public string? BuchTtel { get; set; }
+        public string Titel { get; set; }
 
 
     }

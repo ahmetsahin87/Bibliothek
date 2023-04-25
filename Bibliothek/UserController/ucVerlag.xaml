@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Bibliothek.UserController.ucAusleih"
+﻿<UserControl x:Class="Bibliothek.UserController.ucVerlag"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,21 +9,19 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="70"/>
-         <!--dsfs-->
+            <RowDefinition Height="Auto"/>
+
         </Grid.RowDefinitions>
         <Border Grid.Row="0" >
-            <DataGrid x:Name="grid_ausleih" ItemsSource="{Binding}" Style="{DynamicResource DataGrids}" AutoGenerateColumns="True">
-                <!--<DataGrid.Columns>
-                    <DataGridTextColumn Header="Ausleihdatum" Binding="{Binding AusleihDatum}"/>
-                    <DataGridTextColumn Header="Rückgabedatum" Binding="{Binding RueckgabeDatum}"/>
-                    <DataGridTextColumn Header="Vorname" Binding="{Binding BenutzerVorname}"  />
-                    <DataGridTextColumn Header="Nachname" Binding="{Binding BenutzerNachname}"/>
-                    <DataGridTextColumn Header="BuchTitel" Binding="{Binding BuchTitel}"/>
-                </DataGrid.Columns>-->
+            <DataGrid x:Name="grid_verlag" ItemsSource="{Binding}" Style="{DynamicResource DataGrids}" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                    <DataGridTextColumn Header="Ort" Binding="{Binding Ort}"  />
+                </DataGrid.Columns>               
             </DataGrid>
-        </Border>         
-        <Border Grid.Row="1" Background="White" Height="70" VerticalAlignment="Center" >
+        </Border>
+        <Border Grid.Row="1" Background="White" Height="50" VerticalAlignment="Center" >
             <DockPanel LastChildFill="False" HorizontalAlignment="Center">
                 <Button Content="Hinzufügen" Width="94" Style="{DynamicResource ucbuttons}" Margin="0,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB"/>
                 <Button Content="Löschen" Width="94" Style="{DynamicResource ucbuttons}" Margin="15,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB"/>

@@ -4,6 +4,7 @@ namespace Bibliothek.VMs
 {
     public class BuchVM
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Seite { get; set; }
         public int Erscheinungsjahr { get; set; }

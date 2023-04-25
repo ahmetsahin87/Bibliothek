@@ -34,6 +34,7 @@ namespace Bibliothek.UserController
                 foreach (var benutzer  in Benutzerlist)
                 {
                     var vm = new BenutzerVM();
+                    vm.Id = benutzer.Id;
                     vm.Nachname = benutzer.Nachname;
                     vm.Geburtsdatum=benutzer.Geburtsdatum;
                     vm.Vorname = benutzer.VorName;

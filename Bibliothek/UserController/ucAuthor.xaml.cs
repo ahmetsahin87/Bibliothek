@@ -18,33 +18,33 @@ using System.Windows.Shapes;
 namespace Bibliothek.UserController
 {
     /// <summary>
-    /// Interaktionslogik für ucVerlag.xaml
+    /// Interaktionslogik für ucAuthor.xaml
     /// </summary>
-    public partial class ucVerlag : UserControl
+    public partial class ucAuthor : UserControl
     {
-        public List<Verlag> Verlaglist;
-        public ucVerlag()
+        public List<Author> Authorlist;
+
+        public ucAuthor()
         {
             InitializeComponent();
-            var Verlag_VM_List = new List<VerlagVM>();
+           
+            var Author_VM_list = new List<AuthorVM>();
             using (DbCont _context = new DbCont())
             {
+                Authorlist = _context.Author.ToList();
                 
-                Verlaglist = _context.Verlags.ToList();
-
-                foreach (var verlag in Verlaglist)
+                foreach (Author author in Authorlist)
                 {
-                    var vm = new VerlagVM();
-                    vm.Name = verlag.Name;
-                    vm.Ort = verlag.Ort;
-                    vm.Email = verlag.Email;
+                    var vm = new AuthorVM();
 
-                    Verlag_VM_List.Add(vm);
+                    vm.Id = author.Id;
+                    vm.Nachname = author.Nachname;
+                    vm.Vorname = author.VorName;
 
+                    Author_VM_list.Add(vm);                   
                 }
-
             }
-            this.DataContext = Verlag_VM_List;
+            this.DataContext = Author_VM_list;
         }
     }
 }

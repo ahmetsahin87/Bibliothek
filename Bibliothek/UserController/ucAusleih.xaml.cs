@@ -37,11 +37,12 @@ namespace Bibliothek.UserController
                 foreach (var ausleih in Ausleihlist)
                 {
                     var vm = new AusleihVM();
+                    vm.Id= ausleih.Id;
                     vm.AusleihDatum = ausleih.AusleihDatum;
                     vm.RueckgabeDatum = ausleih.RückgabeDatum;
                     vm.BenutzerVorname = ausleih.Benutzer.VorName;
                     vm.BenutzerNachname= ausleih.Benutzer.Nachname;
-                    vm.BuchTtel = ausleih.Buch.Name; 
+                    vm.Titel = ausleih.Buch.Name; 
                     
                     Ausleih_VM_List.Add(vm);
                 }

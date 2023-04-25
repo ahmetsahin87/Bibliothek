@@ -38,6 +38,9 @@
             <Setter Property="Margin" Value="0,5,0,0"></Setter>
         </Style>
 
+        <Style x:Key="UC_buttons_row" TargetType="Border">
+            <Setter Property="Height" Value="50"></Setter>
+        </Style>
 
 
     </Application.Resources>
