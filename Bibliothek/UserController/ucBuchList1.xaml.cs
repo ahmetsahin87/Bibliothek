@@ -1,6 +1,6 @@
 ﻿
 using Bibliothek.Klassen;
-using Bibliothek.UserControllers;
+using Bibliothek.UserController;
 using Bibliothek.VMs;
 using Microsoft.EntityFrameworkCore;
 using Repository.Models;
@@ -50,8 +50,9 @@ namespace Bibliothek.UserController
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            Buch_Add add = new Buch_Add();
+            add.ShowDialog();
             
-            Add_Buch badd = new Add_Buch();
             
         }
     }

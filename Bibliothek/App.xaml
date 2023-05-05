@@ -42,6 +42,18 @@
             <Setter Property="Height" Value="50"></Setter>
         </Style>
 
+        <Style x:Key="addlabels" TargetType="Label">
+            <Setter Property="Background" Value="#FF134187"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+               <!--messagebox buttons-->
+        <Style x:Key="addbuttons" TargetType="Button">
+            <Setter Property="Background" Value="#FF134187"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
 
     </Application.Resources>
 </Application>
