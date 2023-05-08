@@ -1,5 +1,6 @@
 ﻿
 using Bibliothek.Klassen;
+using Bibliothek.Services;
 using Bibliothek.UserController;
 using Bibliothek.VMs;
 using Microsoft.EntityFrameworkCore;
@@ -15,45 +16,30 @@ namespace Bibliothek.UserController
     public partial class ucBuchList1 : UserControl
     {
         public List<Buch> Buchlist;
-      //  public List<BuchVM> Buch_VM_List ;
+        //  public List<BuchVM> Buch_VM_List ;
+        Buch_Service service=new Buch_Service();
        
         public ucBuchList1()
         {
              InitializeComponent();
-            var Buch_VM_List =new List<BuchVM>();
-
-            using (DbCont _context=new DbCont())
-            {
-                Buchlist = _context.Buches.Include(b => b.Author).Include(b => b.Verlag).ToList();
-
-                
-                foreach (var buch in Buchlist)
-                {
-                    var vm = new BuchVM();
-                    vm.Id= buch.Id;
-                    vm.Name = buch.Name;
-                    vm.Seite = buch.Seite;
-                    vm.Erscheinungsjahr = buch.Erscheinungsjahr.Year;
-                    vm.Author = buch.Author.Nachname;
-                    vm.Verlag = buch.Verlag.Name;
-                   
-                    Buch_VM_List.Add(vm);   
-                    
-                }
-            }    
-
-
-
-            this.DataContext = Buch_VM_List; //Verbindet XAML zu Data
-           // grid_buch.ItemsSource= Buchlist;
+            
+            DataContext = service.GetBuchVMs(); //Verbindet XAML zu Data
+           
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Buch_Add add = new Buch_Add();
             add.ShowDialog();
-            
-            
+                    
+        }
+
+        private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var a = grid_buch.SelectedItem as BuchVM;
+            service.DeleteBuch(a.Id);
+            List<BuchVM> buchList = service.GetBuchVMs();//aktualsisert gridview nach der Löschung
+            grid_buch.ItemsSource = buchList;
         }
     }
 }

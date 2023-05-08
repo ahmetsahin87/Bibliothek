@@ -1,6 +1,8 @@
 ﻿using Bibliothek.Klassen;
+using Bibliothek.Services;
 using Bibliothek.UserController;
 using Bibliothek.VMs;
+using Microsoft.EntityFrameworkCore;
 using Repository.Models;
 using System;
 using System.Collections.Generic;
@@ -24,17 +26,16 @@ namespace Bibliothek
     /// </summary>
     public partial class Buch_Add : Window
     {
+        Buch_Service service = new Buch_Service();
 
         public Buch_Add()
         {
             InitializeComponent();
-            using (DbCont _context = new DbCont())
-            {
-                menuAuthor.DataContext = _context.Author.ToList();
-                menuVerlag.DataContext = _context.Verlags.ToList();
-            }
+           
+           menuAuthor.DataContext = service.GetAuthorList();
+           menuVerlag.DataContext = service.GetVerlagList();
+              
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var selectedAuthor = menuAuthor.SelectionBoxItem as Author;
@@ -48,19 +49,15 @@ namespace Bibliothek
                 VerlagId =  selectedVerlag.Id
             };
 
-            using (DbCont _context = new DbCont())
-            {
-                _context.Buches.Add(neuesBuch);
-                _context.SaveChanges();
-                 var main = new MainWindow();
-                 this.Close();
-                 main.Show();
-
-            }
+            service.CreateBuch(neuesBuch);
+            var main = new MainWindow();
+            this.Close();
+            main.Show();
+                       
         }
 
-       
-       
+
+
 
     }
 }
