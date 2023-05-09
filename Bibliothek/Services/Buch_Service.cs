@@ -14,30 +14,26 @@ namespace Bibliothek.Services
     {
 
         private readonly DbCont _context= new DbCont();
-
         public void CreateBuch(Buch buch)
         {
             _context.Buches.Add(buch);
             _context.SaveChanges();
         }
-
         public Buch ReadBuch(int id)
         {
             return _context.Buches.FirstOrDefault(b => b.Id == id);
         }
-
         public void UpdateBuch(Buch buch)
         {
             _context.Buches.Update(buch);
             _context.SaveChanges();
         }
-
         public void DeleteBuch(int id)
         {
             var buch = _context.Buches.FirstOrDefault(b => b.Id == id);
             if (buch != null)
             {
-                MessageBoxResult result = MessageBox.Show("Löschen ?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show("Löschen ?", "Bestätigung", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     _context.Buches.Remove(buch);
@@ -46,12 +42,10 @@ namespace Bibliothek.Services
 
             }
         }
-
         public List<Buch> GetBuchList() 
         {
             return _context.Buches.ToList();
         }
-
         public List<BuchVM> GetBuchVMs()
         {
            var  Buchlist = _context.Buches.Include(b => b.Author).Include(b => b.Verlag).ToList();
@@ -73,9 +67,6 @@ namespace Bibliothek.Services
 
             return Buch_VM_List;
         }
-
-
-
         public List<Author> GetAuthorList()
         {
             return _context.Author.ToList();
@@ -89,56 +80,92 @@ namespace Bibliothek.Services
             _context.Author.Add(author);
             _context.SaveChanges();
         }
-
         public Author ReadAuthor(int id)
         {
             return _context.Author.FirstOrDefault(a => a.Id == id);
         }
-
         public void UpdateAuthor(Author author)
         {
             _context.Author.Update(author);
             _context.SaveChanges();
         }
-
         public void DeleteAuthor(int id)
         {
             var author = _context.Author.FirstOrDefault(a => a.Id == id);
             if (author != null)
             {
-                _context.Author.Remove(author);
-                _context.SaveChanges();
+                MessageBoxResult result = MessageBox.Show("Author Löschen ?", "Bestätigung", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes) 
+                {
+                    _context.Author.Remove(author);
+                    _context.SaveChanges();
+                }
+                
             }
         }
-
         public void CreateVerlag(Verlag verlag)
         {
             _context.Verlags.Add(verlag);
             _context.SaveChanges();
         }
-
         public Verlag ReadVerlag(int id)
         {
-            return _context.Verlags.FirstOrDefault(v => v.Id == id);
+          return _context.Verlags.FirstOrDefault(v => v.Id == id);
         }
-
         public void UpdateVerlag(Verlag verlag)
         {
             _context.Verlags.Update(verlag);
             _context.SaveChanges();
         }
-
         public void DeleteVerlag(int id)
         {
             var verlag = _context.Verlags.FirstOrDefault(v => v.Id == id);
             if (verlag != null)
             {
-                _context.Verlags.Remove(verlag);
-                _context.SaveChanges();
+                MessageBoxResult result = MessageBox.Show("Verlag Löschen ?", "Bestätigung", MessageBoxButton.YesNo, MessageBoxImage.Question);
+               if (result == MessageBoxResult.Yes)
+                {
+                    _context.Verlags.Remove(verlag);
+                    _context.SaveChanges();
+                }
+               
             }
         }
 
+        public List<AuthorVM> GetAuthorVMs()
+        {
+            var Author_VM_list = new List<AuthorVM>();
+           
+             var Authorlist = _context.Author.ToList();
 
+                foreach (Author author in Authorlist)
+                {
+                    var vm = new AuthorVM();
+                    vm.Id = author.Id;
+                    vm.Nachname = author.Nachname;
+                    vm.Vorname = author.VorName;
 
+                    Author_VM_list.Add(vm);
+                }
+                return Author_VM_list;            
+        }
+        public List<VerlagVM> GetVerlagVMs()
+        {
+            var Verlag_VM_list = new List<VerlagVM>();
+
+            var Verlaglist = _context.Verlags.ToList();
+
+            foreach (Verlag verlag in Verlaglist)
+            {
+                var vm = new VerlagVM();
+                vm.Id = verlag.Id;
+                vm.Email = verlag.Email;
+                vm.Name = verlag.Name;
+                vm.Ort = verlag.Ort;
+
+                Verlag_VM_list.Add(vm);
+            }
+            return Verlag_VM_list;
+        }
     }
 }

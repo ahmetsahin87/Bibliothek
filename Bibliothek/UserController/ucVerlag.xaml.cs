@@ -1,4 +1,5 @@
-﻿using Bibliothek.VMs;
+﻿using Bibliothek.Services;
+using Bibliothek.VMs;
 using Repository.Models;
 using System;
 using System.Collections.Generic;
@@ -23,29 +24,33 @@ namespace Bibliothek.UserController
     public partial class ucVerlag : UserControl
     {
         public List<Verlag> Verlaglist;
+        Buch_Service service = new Buch_Service();
+
         public ucVerlag()
         {
             InitializeComponent();
-            var Verlag_VM_List = new List<VerlagVM>();
-            using (DbCont _context = new DbCont())
-            {
-                
-                Verlaglist = _context.Verlags.ToList();
+            DataContext = service.GetVerlagVMs();
+        }
 
-                foreach (var verlag in Verlaglist)
-                {
-                    var vm = new VerlagVM();
-                    vm.Id = verlag.Id;
-                    vm.Name = verlag.Name;
-                    vm.Ort = verlag.Ort;
-                    vm.Email = verlag.Email;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Verlag_Add verlag_Add = new Verlag_Add();
+            verlag_Add.Closed += Verlag_Add_Closed;
+            verlag_Add.Show();
+        }
 
-                    Verlag_VM_List.Add(vm);
+        private void Verlag_Add_Closed(object? sender, EventArgs e)
+        {
+           List<VerlagVM> verlaglist = service.GetVerlagVMs();
+            grid_verlag.ItemsSource = verlaglist; 
+        }
 
-                }
-
-            }
-            this.DataContext = Verlag_VM_List;
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var a = grid_verlag.SelectedItem as VerlagVM;
+            service.DeleteVerlag(a.Id);
+            List<VerlagVM> verlaglist = service.GetVerlagVMs();
+            grid_verlag.ItemsSource = verlaglist;
         }
     }
 }

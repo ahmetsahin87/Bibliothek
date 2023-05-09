@@ -1,12 +1,10 @@
 ﻿
-using Bibliothek.Klassen;
+
 using Bibliothek.Services;
-using Bibliothek.UserController;
 using Bibliothek.VMs;
-using Microsoft.EntityFrameworkCore;
 using Repository.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Controls;
 namespace Bibliothek.UserController
 {
@@ -21,25 +19,29 @@ namespace Bibliothek.UserController
        
         public ucBuchList1()
         {
-             InitializeComponent();
-            
-            DataContext = service.GetBuchVMs(); //Verbindet XAML zu Data
-           
+            InitializeComponent();            
+            DataContext = service.GetBuchVMs(); //Verbindet XAML zu Data           
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Buch_Add add = new Buch_Add();
-            add.ShowDialog();
-                    
+            Buch_Add buch_add = new Buch_Add();
+            buch_add.Closed += BuchAdd_Closed;
+            buch_add.Show();                    
+        }
+
+        private void BuchAdd_Closed(object? sender, EventArgs e)
+        {
+            List<BuchVM> buchList = service.GetBuchVMs();//Aktualisiert gridtabelle nach der Erstellung des Buches
+            grid_buch.ItemsSource = buchList;
         }
 
         private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
         {
             var a = grid_buch.SelectedItem as BuchVM;
             service.DeleteBuch(a.Id);
-            List<BuchVM> buchList = service.GetBuchVMs();//aktualsisert gridview nach der Löschung
-            grid_buch.ItemsSource = buchList;
+            List<BuchVM> buchList = service.GetBuchVMs();//Aktualisiert gridtabelle nach der Löschung
+            grid_buch.ItemsSource = buchList;            
         }
     }
 }

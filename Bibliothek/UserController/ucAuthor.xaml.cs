@@ -1,4 +1,5 @@
-﻿using Bibliothek.VMs;
+﻿using Bibliothek.Services;
+using Bibliothek.VMs;
 using Repository.Models;
 using System;
 using System.Collections.Generic;
@@ -23,28 +24,32 @@ namespace Bibliothek.UserController
     public partial class ucAuthor : UserControl
     {
         public List<Author> Authorlist;
-
+        Buch_Service service = new Buch_Service();
         public ucAuthor()
         {
-            InitializeComponent();
-           
-            var Author_VM_list = new List<AuthorVM>();
-            using (DbCont _context = new DbCont())
-            {
-                Authorlist = _context.Author.ToList();
-                
-                foreach (Author author in Authorlist)
-                {
-                    var vm = new AuthorVM();
+            InitializeComponent();                
+            DataContext = service.GetAuthorVMs();
+        }
 
-                    vm.Id = author.Id;
-                    vm.Nachname = author.Nachname;
-                    vm.Vorname = author.VorName;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Author_Add author_Add = new Author_Add();
+            author_Add.Closed += AuthorAdd_Closed;
+            author_Add.Show();  
+        }
 
-                    Author_VM_list.Add(vm);                   
-                }
-            }
-            this.DataContext = Author_VM_list;
+        private void AuthorAdd_Closed(object? sender, EventArgs e)
+        {
+            List<AuthorVM> authorVMs = service.GetAuthorVMs();
+            grid_Author.ItemsSource= authorVMs;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var a = grid_Author.SelectedItem as AuthorVM;
+            service.DeleteAuthor(a.Id);
+            List<AuthorVM> buchList = service.GetAuthorVMs();//Aktualisiert gridtabelle nach der Löschung
+            grid_Author.ItemsSource = buchList;
         }
     }
 }

@@ -48,11 +48,8 @@ namespace Bibliothek
                 AuthorId =  selectedAuthor.Id,
                 VerlagId =  selectedVerlag.Id
             };
-
             service.CreateBuch(neuesBuch);
-            var main = new MainWindow();
-            this.Close();
-            main.Show();
+            Close();     
                        
         }
 
