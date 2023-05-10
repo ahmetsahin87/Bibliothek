@@ -1,4 +1,5 @@
-﻿using Bibliothek.VMs;
+﻿using Bibliothek.Services;
+using Bibliothek.VMs;
 using Repository.Models;
 using System;
 using System.Collections.Generic;
@@ -20,28 +21,37 @@ namespace Bibliothek.UserController
     /// <summary>
     /// Interaktionslogik für ucBenutzer.xaml
     /// </summary>
+    /// 
     public partial class ucBenutzer : UserControl
     {
         public List<Benutzer> Benutzerlist;
+        Buch_Service service = new Buch_Service();
         public ucBenutzer()
         {
             InitializeComponent();
-            var Benutzer_VM_List = new List<BenutzerVM>();
-            using (DbCont _context = new DbCont())
-            {
+            DataContext= service.GetBenutzerVMs(); //Verbindet XAML zu Data
 
-                Benutzerlist = _context.Benutzer.ToList();
-                foreach (var benutzer  in Benutzerlist)
-                {
-                    var vm = new BenutzerVM();
-                    vm.Id = benutzer.Id;
-                    vm.Nachname = benutzer.Nachname;
-                    vm.Geburtsdatum=benutzer.Geburtsdatum;
-                    vm.Vorname = benutzer.VorName;
-                    Benutzer_VM_List.Add(vm); 
-                }
-            }
-            this.DataContext = Benutzer_VM_List;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Benutzer_Add nutzer_add = new Benutzer_Add();
+            nutzer_add.Closed += BenutzerAdd_Closed;
+            nutzer_add.Show();
+        }
+
+        private void BenutzerAdd_Closed(object? sender, EventArgs e)
+        {
+            List<BenutzerVM> benutzerlist = service.GetBenutzerVMs();
+            grid_Benutzer.ItemsSource = benutzerlist;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var a = grid_Benutzer.SelectedItem as BenutzerVM;
+            service.DeleteBenutzer(a.Id);
+            List<BenutzerVM> nutzerList = service.GetBenutzerVMs();//Aktualisiert gridtabelle nach der Löschung
+            grid_Benutzer.ItemsSource = nutzerList;
         }
     }
 }

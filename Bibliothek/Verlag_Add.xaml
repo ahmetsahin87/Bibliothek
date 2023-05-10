@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bibliothek"
         mc:Ignorable="d"
-        Title="Verlag_Add" Height="350" Width="300" WindowStartupLocation="CenterScreen">
+        Title="Verlag Hinzufügen" Height="350" Width="300" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFECEAEA">
         <Label Style="{DynamicResource addlabels}" Content="E-Mail" HorizontalAlignment="Left" Margin="24,94,0,0" VerticalAlignment="Top" Width="70"/>
         <Label Style="{DynamicResource addlabels}" Content="Name" HorizontalAlignment="Left" Margin="24,41,0,0" VerticalAlignment="Top" Width="70"/>

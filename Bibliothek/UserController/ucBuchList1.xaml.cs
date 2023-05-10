@@ -14,7 +14,6 @@ namespace Bibliothek.UserController
     public partial class ucBuchList1 : UserControl
     {
         public List<Buch> Buchlist;
-        //  public List<BuchVM> Buch_VM_List ;
         Buch_Service service=new Buch_Service();
        
         public ucBuchList1()
@@ -42,6 +41,11 @@ namespace Bibliothek.UserController
             service.DeleteBuch(a.Id);
             List<BuchVM> buchList = service.GetBuchVMs();//Aktualisiert gridtabelle nach der Löschung
             grid_buch.ItemsSource = buchList;            
+        }
+
+        private void grid_buch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

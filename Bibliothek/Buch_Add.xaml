@@ -15,8 +15,8 @@
         <TextBox x:Name="box_titel" HorizontalAlignment="Left" Height="20" Margin="154,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129"/>
         <TextBox x:Name="box_seite" HorizontalAlignment="Left" Height="20" Margin="218,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.381,4.314"/>
         <DatePicker x:Name="dateEJ" HorizontalAlignment="Left" Margin="154,140,0,0" VerticalAlignment="Top" Width="129"/>
-        <ComboBox x:Name="menuAuthor" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="26" Margin="163,193,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="Nachname" SelectedValuePath="Nachname"  SelectedIndex="0" />
-        <ComboBox x:Name="menuVerlag" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="26" Margin="163,242,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="Name"/>
+        <ComboBox x:Name="menuAuthor" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="26" Margin="154,193,0,0" VerticalAlignment="Top" Width="129" DisplayMemberPath="Nachname" SelectedValuePath="Nachname"  SelectedIndex="0" />
+        <ComboBox x:Name="menuVerlag" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="26" Margin="154,242,0,0" VerticalAlignment="Top" Width="129" DisplayMemberPath="Name" SelectedIndex="0"/>
         <Button Style="{DynamicResource addbuttons}" Content="Hinzufügen" HorizontalAlignment="Left" Height="36" Margin="87,338,0,0" VerticalAlignment="Top" Width="131" Click="Button_Click"/>
     </Grid>
 </Window>

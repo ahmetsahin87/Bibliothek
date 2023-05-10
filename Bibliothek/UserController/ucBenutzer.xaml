@@ -23,8 +23,8 @@
         </Border>
         <Border Grid.Row="1" Background="White" Height="50" VerticalAlignment="Center" >
             <DockPanel LastChildFill="False" HorizontalAlignment="Center">
-                <Button Content="Neuer Benutzer" Width="94" Style="{DynamicResource ucbuttons}" Margin="0,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB"/>
-                <Button Content="Benutzer Löschen" Width="94" Style="{DynamicResource ucbuttons}" Margin="15,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB"/>
+                <Button Content="Neuer Benutzer" Width="94" Style="{DynamicResource ucbuttons}" Margin="0,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB" Click="Button_Click"/>
+                <Button Content="Benutzer Löschen" Width="94" Style="{DynamicResource ucbuttons}" Margin="15,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB" Click="Button_Click_1"/>
             </DockPanel>
 
         </Border>

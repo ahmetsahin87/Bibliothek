@@ -1,4 +1,5 @@
-﻿using Bibliothek.VMs;
+﻿using Bibliothek.UserController;
+using Bibliothek.VMs;
 using Microsoft.EntityFrameworkCore;
 using Repository.Models;
 using System;
@@ -12,7 +13,6 @@ namespace Bibliothek.Services
 {
     internal class Buch_Service
     {
-
         private readonly DbCont _context= new DbCont();
         public void CreateBuch(Buch buch)
         {
@@ -131,7 +131,6 @@ namespace Bibliothek.Services
                
             }
         }
-
         public List<AuthorVM> GetAuthorVMs()
         {
             var Author_VM_list = new List<AuthorVM>();
@@ -166,6 +165,44 @@ namespace Bibliothek.Services
                 Verlag_VM_list.Add(vm);
             }
             return Verlag_VM_list;
+        }
+
+        public List<BenutzerVM> GetBenutzerVMs()
+        {
+            var Benutzer_VM_List = new List<BenutzerVM>();
+            var Benutzerlist = _context.Benutzer.ToList();
+            foreach (var benutzer in Benutzerlist)
+            {
+                var vm = new BenutzerVM();
+                vm.Id = benutzer.Id;
+                vm.Nachname = benutzer.Nachname;
+                vm.Geburtsdatum = benutzer.Geburtsdatum;
+                vm.Vorname = benutzer.VorName;
+                Benutzer_VM_List.Add(vm);
+            }
+            return Benutzer_VM_List;
+
+        }
+
+        public void CreateBenutzer(Benutzer neuerNutzer)
+        {
+            _context.Benutzer.Add(neuerNutzer);
+            _context.SaveChanges();
+        }
+
+        public void DeleteBenutzer(int id)
+        {
+            var nutzer = _context.Benutzer.FirstOrDefault(a => a.Id == id);
+            if (nutzer != null)
+            {
+                MessageBoxResult result = MessageBox.Show("Benutzer Löschen ?", "Bestätigung", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    _context.Benutzer.Remove(nutzer);
+                    _context.SaveChanges();
+                }
+
+            }
         }
     }
 }
