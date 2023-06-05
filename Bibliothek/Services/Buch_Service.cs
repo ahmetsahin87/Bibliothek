@@ -14,6 +14,11 @@ namespace Bibliothek.Services
     internal class Buch_Service
     {
         private readonly DbCont _context= new DbCont();
+
+        public void UpdateContext()
+        {
+            _context.SaveChanges();
+        }
         public void CreateBuch(Buch buch)
         {
             _context.Buches.Add(buch);
@@ -22,6 +27,10 @@ namespace Bibliothek.Services
         public Buch ReadBuch(int id)
         {
             return _context.Buches.FirstOrDefault(b => b.Id == id);
+        }
+        public Ausleih GetAusleih(int id)
+        {
+            return _context.Ausleihs.FirstOrDefault(a => a.Id == id); 
         }
         public void UpdateBuch(Buch buch)
         {
@@ -166,7 +175,6 @@ namespace Bibliothek.Services
             }
             return Verlag_VM_list;
         }
-
         public List<BenutzerVM> GetBenutzerVMs()
         {
             var Benutzer_VM_List = new List<BenutzerVM>();
@@ -183,13 +191,11 @@ namespace Bibliothek.Services
             return Benutzer_VM_List;
 
         }
-
         public void CreateBenutzer(Benutzer neuerNutzer)
         {
             _context.Benutzer.Add(neuerNutzer);
             _context.SaveChanges();
         }
-
         public void DeleteBenutzer(int id)
         {
             var nutzer = _context.Benutzer.FirstOrDefault(a => a.Id == id);
@@ -203,6 +209,42 @@ namespace Bibliothek.Services
                 }
 
             }
+        }
+
+        public List<Benutzer> GetBenutzerList()
+        {
+            return _context.Benutzer.ToList();
+        }
+
+        internal List<AusleihVM> GetAusleihVMs()
+        {
+            var Ausleihlist = _context.Ausleihs.Include(a => a.Buch).Include(b => b.Benutzer).ToList();
+            var Ausleih_VM_List = new List<AusleihVM>();
+            foreach (var ausleih in Ausleihlist)
+            {
+                var vm = new AusleihVM();
+                vm.Id = ausleih.Id;
+                vm.AusleihDatum = ausleih.AusleihDatum;
+                vm.RueckgabeDatum = ausleih.RueckgabeDatum;
+                vm.BenutzerVorname = ausleih.Benutzer.VorName;
+                vm.BenutzerNachname = ausleih.Benutzer.Nachname;
+                vm.Titel = ausleih.Buch.Name;
+
+                Ausleih_VM_List.Add(vm);
+            }
+            return Ausleih_VM_List;
+        }
+        internal void RueckgabeAusleih(Ausleih ausleih)
+        {            
+            _context.Ausleihs.Update(ausleih);
+            _context.SaveChanges();
+            
+        }
+
+        internal void CreateAusleih(Ausleih neuAusleih)
+        {
+            _context.Ausleihs.Add(neuAusleih);
+            _context.SaveChanges();
         }
     }
 }

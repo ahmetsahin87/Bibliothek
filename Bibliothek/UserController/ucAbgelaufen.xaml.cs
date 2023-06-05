@@ -1,4 +1,5 @@
-﻿using Repository.Models;
+﻿using Bibliothek.Services;
+using Repository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,14 +24,12 @@ namespace Bibliothek.UserController
     public partial class ucAbgelaufen : UserControl
     {
         public List<Abgelaufen> Abgelaufenlist;
+        Buch_Service service = new Buch_Service();
         public ucAbgelaufen()
         {
             InitializeComponent();
-            using (DbCont _context = new DbCont())
-            {
-               // Abgelaufenlist = _context.Ausleihs.ToList();
-            }
-            //grid_abgelaufen.ItemsSource = Abgelaufenlist;
+            DataContext = service.GetAusleihVMs().Where(a=> a.RueckgabeDatum==null).ToList();
+            
         }
     }
 }

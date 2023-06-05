@@ -13,7 +13,7 @@
 
         </Grid.RowDefinitions>
         <Border Grid.Row="0" >
-            <DataGrid x:Name="grid_abgelaufen"  Style="{DynamicResource DataGrids}"/>
+            <DataGrid x:Name="grid_abgelaufen" ItemsSource="{Binding}" Style="{DynamicResource DataGrids}"/>
         </Border>
         <Border Grid.Row="1" Background="White" Height="70" VerticalAlignment="Center" >
             <DockPanel LastChildFill="False" HorizontalAlignment="Center">

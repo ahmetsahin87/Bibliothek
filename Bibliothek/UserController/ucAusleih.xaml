@@ -15,18 +15,18 @@
         <Border Grid.Row="0" >
             <DataGrid x:Name="grid_ausleih" ItemsSource="{Binding}" Style="{DynamicResource DataGrids}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Ausleihdatum" Binding="{Binding AusleihDatum}"/>
-                    <DataGridTextColumn Header="Rückgabedatum" Binding="{Binding RueckgabeDatum}"/>
+                    <DataGridTextColumn Header="Buchtitel" Binding="{Binding Titel}"/>
                     <DataGridTextColumn Header="Vorname" Binding="{Binding BenutzerVorname}"  />
                     <DataGridTextColumn Header="Nachname" Binding="{Binding BenutzerNachname}"/>
-                    <DataGridTextColumn Header="Titel" Binding="{Binding Titel}"/>
+                    <DataGridTextColumn Header="Ausleihdatum" Binding="{Binding AusleihDatum, StringFormat=\{0:d\}}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Rückgabedatum" Binding="{Binding RueckgabeDatum, StringFormat=\{0:d\}}"  IsReadOnly="True"/>           
                 </DataGrid.Columns>
             </DataGrid>
         </Border>         
         <Border Grid.Row="1" Background="White" Height="50" VerticalAlignment="Center" >
             <DockPanel LastChildFill="False" HorizontalAlignment="Center">
-                <Button Content="Hinzufügen" Width="94" Style="{DynamicResource ucbuttons}" Margin="0,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB"/>
-                <Button Content="Löschen" Width="94" Style="{DynamicResource ucbuttons}" Margin="15,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB"/>
+                <Button x:Name="button_ausleih" Content="Ausleih" Width="94" Style="{DynamicResource ucbuttons}" Margin="0,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB" Click="button_ausleih_Click"/>
+                <Button x:Name="button_rueckgabe" Content="Rückgabe" Width="94" Style="{DynamicResource ucbuttons}" Margin="15,2,15,2" BorderBrush="#FF19C2FB" Background="White" Foreground="#FF19C2FB" Click="button_rueckgabe_Click" />
             </DockPanel>
         </Border>
     </Grid>

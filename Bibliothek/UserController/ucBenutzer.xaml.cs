@@ -24,7 +24,6 @@ namespace Bibliothek.UserController
     /// 
     public partial class ucBenutzer : UserControl
     {
-        public List<Benutzer> Benutzerlist;
         Buch_Service service = new Buch_Service();
         public ucBenutzer()
         {

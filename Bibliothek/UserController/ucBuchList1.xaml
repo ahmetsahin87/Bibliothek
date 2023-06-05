@@ -10,18 +10,16 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
-
         </Grid.RowDefinitions>
         <Border Grid.Row="0" >
-            <DataGrid x:Name="grid_buch" ItemsSource="{Binding}" Style="{DynamicResource DataGrids}" Margin="0,5,0,0" AutoGenerateColumns="False" ColumnWidth="Auto" SelectionChanged="grid_buch_SelectionChanged" IsReadOnly="True" >
+            <DataGrid x:Name="grid_buch" ItemsSource="{Binding}" Style="{DynamicResource DataGrids}" Margin="0,5,0,0" AutoGenerateColumns="False" ColumnWidth="Auto" SelectionChanged="grid_buch_SelectionChanged" IsReadOnly="True" HeadersVisibility="Column" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Titel" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Seite" Binding="{Binding Seite}"/>
-                    <DataGridTextColumn Header="Erscheinungsjahr" Binding="{Binding Erscheinungsjahr}"  />
+                    <DataGridTextColumn Header="Erscheinungsjahr" Binding="{Binding Erscheinungsjahr, StringFormat=\{0:d\}}"  />
                     <DataGridTextColumn Header="Author" Binding="{Binding Author}"/>
                     <DataGridTextColumn Header="Verlag" Binding="{Binding Verlag}"/>
-                </DataGrid.Columns>
-               
+                </DataGrid.Columns>               
             </DataGrid>
 
         </Border>

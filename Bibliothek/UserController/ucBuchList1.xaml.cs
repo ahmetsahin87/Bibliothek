@@ -13,7 +13,6 @@ namespace Bibliothek.UserController
     /// </summary>
     public partial class ucBuchList1 : UserControl
     {
-        public List<Buch> Buchlist;
         Buch_Service service=new Buch_Service();
        
         public ucBuchList1()

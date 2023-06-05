@@ -1,19 +1,6 @@
 ﻿using Bibliothek.Klassen;
 using Bibliothek.UserController;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Bibliothek
 {
@@ -31,11 +18,6 @@ namespace Bibliothek
         {
             this.Close();
         }
-
-       
-
-
-
         private void windowload(object sender, RoutedEventArgs e)
         {
             UC_Call.UC_Add(Inhalt, new ucBuchList1());
@@ -43,13 +25,13 @@ namespace Bibliothek
 
         private void btn_minimize_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState= WindowState.Minimized;
+            this.WindowState = WindowState.Minimized;
         }
 
         private void btn_maximize_Click(object sender, RoutedEventArgs e)
         {
-            if(this.WindowState==WindowState.Normal)
-            this.WindowState = WindowState.Maximized;
+            if (this.WindowState == WindowState.Normal)
+                this.WindowState = WindowState.Maximized;
             else this.WindowState = WindowState.Normal;
         }
         private void btn_Katalog_click(object sender, RoutedEventArgs e)

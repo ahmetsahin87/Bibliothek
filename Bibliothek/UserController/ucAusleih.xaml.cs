@@ -1,20 +1,9 @@
-﻿using Bibliothek.VMs;
-using Microsoft.EntityFrameworkCore;
-using Repository.Models;
+﻿using Bibliothek.Klassen;
+using Bibliothek.Services;
+using Bibliothek.VMs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Bibliothek.UserController
 {
@@ -23,31 +12,41 @@ namespace Bibliothek.UserController
     /// </summary>hkhhjkk
     public partial class ucAusleih : UserControl
     {
-        public List<Ausleih> Ausleihlist;
-        public ucAusleih() 
-        {            
+
+        Buch_Service service = new Buch_Service();
+        public ucAusleih()
+        {
             InitializeComponent();
-             
-            List<AusleihVM> Ausleih_VM_List= new List<AusleihVM>();
-
-            using (DbCont _context = new DbCont())
-            {
-                Ausleihlist = _context.Ausleihs.Include(a=>a.Buch).Include(b=>b.Benutzer).ToList();
-
-                foreach (var ausleih in Ausleihlist)
-                {
-                    var vm = new AusleihVM();
-                    vm.Id= ausleih.Id;
-                    vm.AusleihDatum = ausleih.AusleihDatum;
-                    vm.RueckgabeDatum = ausleih.RückgabeDatum;
-                    vm.BenutzerVorname = ausleih.Benutzer.VorName;
-                    vm.BenutzerNachname= ausleih.Benutzer.Nachname;
-                    vm.Titel = ausleih.Buch.Name; 
-                    
-                    Ausleih_VM_List.Add(vm);
-                }
-            }
-           this.DataContext= Ausleih_VM_List;
+            DataContext = service.GetAusleihVMs();
         }
+
+        private void button_ausleih_Click(object sender, RoutedEventArgs e)
+        {
+            AusleihAdd ausleih_add = new AusleihAdd();
+            ausleih_add.Closed += Ausleih_Closed;
+            ausleih_add.Show();
+        }
+
+
+        private void button_rueckgabe_Click(object sender, RoutedEventArgs e)
+        {
+            AusleihVM ausleih = (AusleihVM)grid_ausleih.SelectedItem;
+            Rueckgabe rueckgabe = new Rueckgabe(ausleih);
+            rueckgabe.Closed += Ausleih_Closed;
+            rueckgabe.Show();
+
+        }
+
+
+        private void Ausleih_Closed(object? sender, EventArgs e)
+        {
+           
+           grid_ausleih.ItemsSource = service.GetAusleihVMs();//Aktualisiert gridtabelle nach der Erstellung des Ausleihes
+            //MainWindow mainWindow= new MainWindow();
+            //UC_Call.UC_Add(mainWindow.Inhalt, new ucAusleih());
+        }
+
+
+       
     }
 }

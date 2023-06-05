@@ -23,7 +23,6 @@ namespace Bibliothek.UserController
     /// </summary>
     public partial class ucAuthor : UserControl
     {
-        public List<Author> Authorlist;
         Buch_Service service = new Buch_Service();
         public ucAuthor()
         {
@@ -48,8 +47,8 @@ namespace Bibliothek.UserController
         {
             var a = grid_Author.SelectedItem as AuthorVM;
             service.DeleteAuthor(a.Id);
-            List<AuthorVM> buchList = service.GetAuthorVMs();//Aktualisiert gridtabelle nach der Löschung
-            grid_Author.ItemsSource = buchList;
+            List<AuthorVM> authorList = service.GetAuthorVMs();//Aktualisiert gridtabelle nach der Löschung
+            grid_Author.ItemsSource = authorList;
         }
     }
 }
