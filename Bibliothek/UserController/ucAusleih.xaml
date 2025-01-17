@@ -18,8 +18,10 @@
                     <DataGridTextColumn Header="Buchtitel" Binding="{Binding Titel}"/>
                     <DataGridTextColumn Header="Vorname" Binding="{Binding BenutzerVorname}"  />
                     <DataGridTextColumn Header="Nachname" Binding="{Binding BenutzerNachname}"/>
-                    <DataGridTextColumn Header="Ausleihdatum" Binding="{Binding AusleihDatum, StringFormat=\{0:d\}}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Rückgabedatum" Binding="{Binding RueckgabeDatum, StringFormat=\{0:d\}}"  IsReadOnly="True"/>           
+                    <DataGridTextColumn Header="Ausleihdatum"
+                                        Binding="{Binding AusleihDatum, StringFormat='dd-MM-yyyy'}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Rückgabedatum"
+                                        Binding="{Binding RueckgabeDatum, StringFormat='dd-MM-yyyy'}"  IsReadOnly="True"/>           
                 </DataGrid.Columns>
             </DataGrid>
         </Border>         

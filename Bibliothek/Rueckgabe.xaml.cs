@@ -28,7 +28,8 @@ namespace Bibliothek
             var ausleih = service.GetAusleih(AusleihVM.Id);
             ausleih.RueckgabeDatum = (DateTime)dateEJ.SelectedDate;
             service.RueckgabeAusleih(ausleih);
-           
+            service.GetAusleihVMs();
+
             Close();
         }
     }

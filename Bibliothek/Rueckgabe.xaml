@@ -29,7 +29,8 @@
                     HorizontalAlignment="Left"
                     Margin="154,140,0,0"
                     VerticalAlignment="Top"
-                    Width="129" />
+                    Width="129"
+                    DisplayDate="{Binding RueckgabeDatum, StringFormat=\{0:d\}}" />
         <Button Style="{DynamicResource addbuttons}"
                 Content="Aktualisieren"
                 HorizontalAlignment="Left"
